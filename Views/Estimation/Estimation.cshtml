@@ -1,0 +1,88 @@
+@model JewelleryStoreApp.Models.PriceDetail
+@using Newtonsoft.Json;
+@section scripts {
+<script type="text/javascript">
+
+  function Calculate() {
+    alert('You clicked ');
+  }
+
+</script>
+
+}
+<style>
+  .price-estimation {
+    background-color: lightgrey;
+    padding-left: 25%;
+  }
+
+  .user-type {
+    text-align: right;
+    padding-right: 10px;
+  }
+
+  .price-estimation input[type="text"] {
+    padding: 12px 20px;
+    margin: 25px;
+    margin-right: 0px;
+    margin-left: 40px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .total-price {
+    margin-top: 20px;
+  }
+</style>
+
+<div class="price-estimation">
+  <p class="user-type">Welcome :
+    @{
+      if (Model.UserType == "P")
+      {
+        <span>Privileged user</span>
+      }
+      else
+      {
+        <span> Normal user</span>
+      }
+    }
+  </p>
+  <form asp-controller="Estimation" method="POST">
+    <input type="hidden" value="@Model.UserType" name="usertype">
+    <div class="price">
+      <label><b>Gold Price (per gram)</b></label>
+      <input id="price" type="text" name="pricepergram" value="@Model.PricePerGram" required>
+    </div>
+    <div class="weight">
+      <label><b>Weight (grams)</b></label>
+      <input id="weight" type="text" value="@Model.Weight" name="weight" required>
+    </div>
+    <div class="total-price">
+      <label><b>Total Price</b></label>
+      <input id="totalPrice" type="text" value="@Model.TotalPrice" name="totalprice">
+      <div>
+
+        @{
+          if (Model.UserType == "P")
+          {
+            <label><b>Discount %</b></label>
+            <input id="discount" class="discount" value="@Model.Discount" type="text" name="discount">
+          }
+        }
+      </div>
+    </div>
+    <div class="btn-section">
+      <button type="submit" class="btn btn-secondary" asp-action="Calculate"
+        class="btn btn-secondary">Calculate</button>
+      <button type="button"
+        onclick="alert
+      (`Price Estimation\nGold Price (per gm): ${@Model.PricePerGram}\n weight (gms): ${@Model.Weight}\n Discount: ${@Model.Discount}%\n Total Price: ${@Model.TotalPrice}`)"
+        class="btn btn-secondary">Print to Screen</button>
+      <button type="submit" class="btn btn-secondary" asp-action="PrintFile">Print to File</button>
+      <button type="submit" class="btn btn-secondary" asp-action="PrintPaper">Print to Paper</button>
+      <button type="submit" class="btn btn-secondary" asp-controller="Login" asp-action="Index">Close</button>
+    </div>
+  </form>
+</div>

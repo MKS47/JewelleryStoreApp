@@ -1,0 +1,55 @@
+<style>
+    form {
+        background-color: lightgrey;
+        width: 50%;
+        height: 50%;
+        margin-left: 20%;
+
+    }
+
+    .login-section {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    input[type=text],
+    input[type=password] {
+        padding: 12px 20px;
+        margin: 25px;
+        margin-right: 0px;
+        margin-left: 40px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    .btn-section {
+        display: flex;
+       justify-content: center;       
+    }
+
+    .btn-section .login {
+        margin-right: 20px;
+    }
+
+    .btn-secondary {
+        width: 100px;
+    }
+</style>
+<form class="login-form" asp-controller="Login" asp-action="Login">
+    <div class="login-section">
+        <div>
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+        </div>
+        <div>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+        </div>
+    </div>
+    <div class="btn-section">
+        <button type="submit" class="btn btn-secondary login">Login</button>
+        <button type="button" class="btn btn-secondary cancel">Cancel</button>
+    </div>
+</form>

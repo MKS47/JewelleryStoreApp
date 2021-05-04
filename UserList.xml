@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Users>
+<User>
+<Id>1</Id>
+<UserName>sherlock</UserName>
+<Password>password1</Password>
+<Type>P</Type>
+<Discount>2</Discount>
+</User>
+<User>
+<Id>2</Id>
+<UserName>watson</UserName>
+<Password>password2</Password>
+<Type>R</Type>
+<Discount>0</Discount>
+</User>
+</Users>
